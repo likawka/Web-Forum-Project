@@ -1,0 +1,27 @@
+{{template "base" .}}
+
+{{define "css"}}
+{{template "sidebar.css" .}}
+{{template "header.css" .}}
+{{template "createPost.css" .}}
+{{template "markdownEditor.css" .}}
+{{end}}
+
+{{define "title"}}Create Post{{end}}
+
+{{define "content"}}
+<div class="mainBody">
+  {{template "sidebar" .}}
+  <div class="col-2">
+    {{template "header" .}}
+    <main class="content">
+      {{template "createPost" .}}
+    </main>
+  </div>
+</div>
+{{end}}
+
+{{define "js"}}
+{{template "postBox.js" .}}
+{{template "markdownEditor.js" .}}
+{{end}}

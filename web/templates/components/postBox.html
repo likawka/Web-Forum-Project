@@ -1,0 +1,94 @@
+{{define "postBox.css"}}
+{{end}}
+
+{{define "postBox"}}
+<div class="questionbox" {{ if eq .ContentType "comment" }} id="c-{{.Id}}" {{ end }}>
+    <div id="notification"></div>
+
+    {{ if eq .ContentType "posts" }}
+    <div class="infobox">
+        <div class="infoBoxRow">
+            <img class="mainIcon" src="/assets/img/commentsIcon.svg" />
+            <div class="infostatic">{{.AmountOfComments}}</div>
+        </div>
+        <div class="infoBoxRow">
+            <img class="mainIcon" src="/assets/img/viewedIcon.svg" />
+            <div class="infostatic">{{.AmountOfWatches}}</div>
+        </div>
+        <div class="infoBoxRow">
+            <img class="mainIcon" src="/assets/img/rateIcon.svg" />
+            <div class="infostatic">{{.Rate}}</div>
+        </div>
+    </div>
+    {{else}}
+    <div class="ratebox">
+
+        <form action="" method="post">
+            <button type="submit" name="Rate" value="1,{{.ContentType}},{{.Id}}" style="background:none; border:none;">
+                <img {{if eq .RateType "1" }} src="/assets/img/likeActive.svg" {{else}} src="/assets/img/like.svg"
+                    {{end}}class="rateicon click">
+            </button>
+        </form>
+        <div class="rateNum">{{.Rate}}</div>
+        <form action="" method="post">
+            <button type="submit" name="Rate" value="-1,{{.ContentType}},{{.Id}}"
+                style="background:none; border:none; transform: rotate(180deg)">
+                <img {{if eq .RateType "-1" }} src="/assets/img/likeActive.svg" {{else}} src="/assets/img/like.svg"
+                    {{end}}class="rateicon click">
+            </button>
+        </form>
+    </div>
+    {{ end }}
+
+
+    <div class="questContainer">
+        {{if eq .ContentType "posts"}}
+        <div class="title click" onclick="window.location.href='/post/{{.Id}}'">{{.Title}}</div>
+        <style>
+            .questtextbox {
+                /* height: 4rem; */
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+        {{end}}
+        <div class="questtextbox">{{.Content}}</div>
+
+        <div class="addinfoframe">
+
+            <div class="tags">
+                {{if ne .ContentType "comment"}}
+                {{ range .Tags }}
+                <div class="tag tagview click" onclick="window.location.href = '/search?search=%5B{{ . }}%5D';">{{ . }}
+                </div>
+                {{ end }}
+
+                {{end}}
+            </div>
+
+
+            <div class="postedby">
+                <div class="tag">Posted by</div>
+                <div class="tag click" onclick="window.location.href = '/user/{{.UserId}}';">{{ .UserName}}</div>
+                {{ if .CreatedAt }}
+                <div class="inforender">{{ .CreatedAt }}</div>
+                {{if eq .ContentType "posts"}}
+                <img class="shareIcon click" onclick="copyLink('/post/{{ .Id }}')" src="/assets/img/share_grey.svg"
+                    alt="Copy Link">
+                {{ end }}
+                {{if eq .ContentType "comment"}}
+                <img class="shareIcon click" onclick="copyLink('/post/{{.PostId}}#c-{{ .Id }}')"
+                    src="/assets/img/share_grey.svg" alt="Copy Link">
+                {{ end }}
+                {{ end }}
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{{end}}
+
+{{define "postBox.js"}}
+<script src="/assets/js/pageEdit.js"></script>
+{{end}}

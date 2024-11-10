@@ -1,0 +1,23 @@
+{{template "base" .}}
+
+{{define "css"}}
+{{template "authBox.css"}}
+{{end}}
+
+{{define "title"}} Authourisation {{end}}
+
+
+{{define "content"}}
+<div class="mainBody">
+    <div class="authourisation">
+        <div class="logoSideBarFrame click" onclick="window.location.href = '/';">UNDER pressure</div>
+        <div class="line"></div>
+        {{template "authBox" .}}
+    </div>
+
+</div>
+{{end}}
+
+{{define "js"}}
+
+{{end}}

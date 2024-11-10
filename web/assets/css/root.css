@@ -1,0 +1,106 @@
+:root {
+    /* Colors */
+    --main-white: rgba(255, 255, 255, 0.92);
+    --light-white: rgba(255, 255, 255, 0.64);
+    --light-gray: rgba(255, 255, 255, 0.1);
+    --extra-light-gray: rgba(255, 255, 255, 0.05);
+    --ultra-light-gray: rgba(255, 255, 255, 0.03);
+    --bright-red: rgba(250, 35, 59, 1);
+    --light-red: rgba(250, 88, 106, 1);
+    --dark-background: rgba(31, 31, 31, 1);
+
+    /* Font Styles */
+    /* Font Sizes */
+    --font-size-extra-small: 7.5pt;
+    /* 10px */
+    --font-size-small: 9pt;
+    /* 12px */
+    --font-size-medium: 12pt;
+    /* 16px */
+    --font-size-large: 14pt;
+    /* 20px */
+    --font-size-extra-large: 21pt;
+    /* 28px */
+
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --font-weight-heavy: 700;
+
+    /* Gaps */
+    --gap-small: 0.313rem;
+    --gap-medium: 0.625rem;
+
+    /* Padding */
+    --padding-small: 0.313rem 0.625rem;
+    --padding-medium: 0.625rem 2.5rem;
+    --padding-large: 1.875rem 2.5rem;
+
+    /* Border Radius */
+    --border-radius: 0.375rem;
+
+    --border-style: 1px solid var(--light-gray);
+    --line-style: 1px dashed var(--light-white);
+
+
+}
+
+@font-face {
+    font-family: "e-Ukraine";
+    src: url('/assets/fonts/e-UkraineHead-Regular.ttf');
+}
+
+@font-face {
+    font-family: "e-Ukraine-LOGO";
+    src: url('/assets/fonts/e-UkraineHead-LOGO.ttf');
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "e-Ukraine";
+    overflow-wrap: break-word;
+
+}
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background: var(--dark-background);
+    overflow: hidden;
+    user-select: none;
+}
+
+.mainBody {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+
+}
+
+.col-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+}
+
+.content {
+    display: flex;
+    padding: var(--padding-large);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    width: 100%;
+    height: calc(100vh - 3.75rem);
+    overflow: auto;
+}
+
+@media screen and (max-width: 768px) {
+    :root{
+        --padding-medium: 0.625rem 2rem;
+        --padding-large: 1rem 2rem;
+    }
+}

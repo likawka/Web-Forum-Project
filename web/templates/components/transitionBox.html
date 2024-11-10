@@ -1,0 +1,13 @@
+{{define "transitionBox.css"}}
+{{end}}
+
+{{define "transitionBox"}}
+<div class="addinfoframe">
+    <div class="pages click">
+        {{ range .pageNumbers }}
+            <div class="pageview pagenum">{{ . }}</div>
+        {{ end }}
+    </div>
+</div>
+
+{{end}}

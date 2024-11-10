@@ -1,0 +1,45 @@
+{{template "base" .}}
+
+{{define "css"}}
+{{template "sidebar.css" .}}
+{{template "header.css" .}}
+{{end}}
+
+{{define "title"}}{{if .FormData.search}}Find:{{.FormData.search}}{{else if .AddData.Error }} Wooooops! {{else}}All
+Posts{{end}}{{end}}
+
+{{define "content"}}
+<div class="mainBody">
+  {{template "sidebar" .}}
+  <div class="col-2">
+    {{template "header" .}}
+    <main class="content">
+      {{if .AddData.Error}}
+      {{template "errorBox" .}}
+      {{else}}
+      <div class="addinfo">
+        <div class="headline">{{if .FormData.search}} Find:{{else}} All Posts{{end}}</div>
+        <div class="headline" style="color: var(--light-red);">{{.FormData.search}}</div>
+      </div>
+
+      <div class="addinfoframe">
+        <div class="addinfo">
+          <div class="infostatic">Amount</div>
+          <div class="inforender">{{.AddData.AmountOfPosts}}</div>
+        </div>
+        {{template "sortBox" .}}
+      </div>
+      <div class="line"></div>
+      {{range .ParseData.Posts}}
+      {{template "postBox" .}}
+      <div class="line"></div>
+      {{end}}
+      {{end}}
+    </main>
+  </div>
+</div>
+{{end}}
+
+{{define "js"}}
+{{template "postBox.js" .}}
+{{end}}

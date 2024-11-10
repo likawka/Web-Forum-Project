@@ -1,0 +1,14 @@
+{{define "markdownEditor.css"}}
+<link rel="stylesheet" href="/assets/css/markdownEditor.css" />
+{{end}}
+
+{{define "markdownEditor"}}
+<div class="markdown-container">
+    <textarea id="markdownEditor" name="content">{{.FormData.content}}</textarea>
+</div>
+{{end}}
+
+{{define "markdownEditor.js"}}
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script src="/assets/js/markdownEditor.js"></script>
+{{end}}

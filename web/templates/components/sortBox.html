@@ -1,0 +1,21 @@
+{{define "sortBox.css"}}
+{{end}}
+
+{{define "sortBox"}}
+<div class="tags">
+    {{ if .ParseData.User }}
+    <form class="tags" id="sort" method="post" action="">
+        <input type="submit"  class="tagsort tagview click{{if eq .AddData.SortByType "Posts"}} active{{end}}" name="SortByType" value="Posts" {{if eq .AddData.SortByType "Posts"}} disabled{{end}}>
+        <!-- <input type="submit"  class="tagsort tagview click{{if eq .AddData.SortByType "Comments"}} active{{end}}" name="SortByType" value="Comments" {{if eq .AddData.SortByType "Comments"}} disabled{{end}}> -->
+    </form>
+    <div
+    style="height: 15px; width: 2px; background-color: var(--extra-light-gray); border-radius: var(--border-radius);">
+</div>
+    {{ end }}
+    <form class="tags" id="sort" method="post" action="">
+        <input type="submit"  class="tagsort tagview click{{if eq .AddData.SortBy "Newest"}} active{{end}}" name="SortBy" value="Newest" {{if eq .AddData.SortBy "Newest"}} disabled{{end}}>
+        <input type="submit"  class="tagsort tagview click{{if eq .AddData.SortBy "Oldest"}} active{{end}}" name="SortBy" value="Oldest" {{if eq .AddData.SortBy "Oldest"}} disabled{{end}}>
+        <input type="submit"  class="tagsort tagview click{{if eq .AddData.SortBy "Popular"}} active{{end}}" name="SortBy" value="Popular" {{if eq .AddData.SortBy "Popular"}} disabled{{end}}>
+    </form>
+</div>
+{{end}}

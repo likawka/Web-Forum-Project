@@ -1,0 +1,84 @@
+{{define "authBox.css"}}
+<link rel="stylesheet" href="/assets/css/authourisation.css" />
+{{end}}
+
+
+
+{{define "authBox"}}
+{{if ne .FormData.authStatus "REGISTER"}}
+<form class="authform" method="POST" action="">
+    <div class="authinfobox">
+        <input type="email" name="email" class="authInput" placeholder="EMAIL" pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            required />
+    </div>
+    <div class="authinfobox">
+        <input type="password" name="password" class="authInput" placeholder="PASSWORD" minlength="8" maxlength="16"
+            required />
+    </div>
+    <div class="rowBox">
+        {{.AddData.ErrorText}}
+    </div>
+    <div class="authbtnbox">
+        <input type="submit" class="authBnt" value="LOGIN" name="action">
+    </div>
+</form>
+<form class="authform" method="POST" action="">
+    <div class="authbtnbox2">
+        <div class="infostatic">Don’t have an account?</div>
+        <input type="submit" class="inforender registerview" value="REGISTER" name="authStatus">
+    </div>
+</form>
+{{else}}
+<form class="authform" method="POST" action="">
+    <div class="authinfobox">
+        <input type="text" name="username" value="{{.FormData.username}}" class="authInput" placeholder="USERNAME"
+            required maxlength="16" />
+    </div>
+    <div class="authinfobox">
+        <input type="email" name="email" value="{{.FormData.email}}" class="authInput" placeholder="EMAIL"
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required />
+    </div>
+    <div class="authinfobox">
+        <input type="password" name="password" class="authInput" placeholder="PASSWORD" minlength="8" maxlength="16"
+            required />
+    </div>
+
+    <div class="authinfobox ">
+        <input type="password" name="reppassword" class="authInput" placeholder="REPEAT PASSWORD" minlength="8"
+            maxlength="16" required />
+    </div>
+
+    <div class="rowBox">
+        {{.AddData.ErrorText}}
+    </div>
+
+    <div class="authbtnbox">
+        <input type="submit" class="authBnt" value="REGISTER" name="action">
+    </div>
+</form>
+
+<form class="authform" method="POST" action="">
+    <div class="authbtnbox2">
+        <div class="infostatic">Already have an account?</div>
+        <input type="submit" class="inforender registerview" value="LOGIN" name="authStatus">
+    </div>
+</form>
+{{end}}
+<form method="post" class="authbtnbox" onsubmit="return appendProvider()">
+    <input type="submit" class="authBntapi" value="GitHub" name="action" data-provider="github">
+    <input type="submit" class="authBntapi" value="Google" name="action" data-provider="google">
+</form>
+
+<script>
+    function appendProvider() {
+        var currentUrl = window.location.href;
+        var provider = event.submitter.getAttribute('data-provider').toLowerCase();
+        window.location.href = currentUrl + '/' + provider;
+        return false; 
+    }
+</script>
+{{end}}
+
+{{define "authBox.js"}}
+
+{{end}}

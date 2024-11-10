@@ -1,0 +1,30 @@
+{{define "createPost.css"}}
+<link rel="stylesheet" href="/assets/css/createpost.css" />
+{{end}}
+
+{{define "createPost"}}
+<div class="mainPost">
+    <form id="createPost" method="post" action="">
+        <div class="inputbox">
+            <input class="inputview inputbox" placeholder="Input title..." name="title" required minlength="5"
+                maxlength="100" id="titleInput" oninput="countCharacters('titleInput', 'titleCount')"
+                value="{{.FormData.title}}">
+        </div>
+        <div class="tagsCount"><span id="titleCount">0</span>/100</div>
+
+        {{template "markdownEditor" .}}
+
+        <div class="inputaTagbox">
+            <input class="inputview inputaTagbox" placeholder="Input tags..." name="categories" required minlength="2"
+                maxlength="50" id="tagsInput" oninput="countCharacters('tagsInput', 'tagsCount')"
+                value="{{.FormData.categories}}">
+        </div>
+        <div class="tagsCount"><span id="tagsCount">0</span>/50</div>
+
+        <div class="rowBox">
+            <input type="submit" value="POST" class="click headerBnt">
+            {{.AddData.ErrorText}}
+        </div>
+    </form>
+</div>
+{{end}}

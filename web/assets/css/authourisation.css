@@ -1,0 +1,91 @@
+.authourisation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 21rem;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: var(--gap-medium);
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoSideBarFrame {
+    display: flex;
+    padding: var(--padding-medium);
+    color: var(--main-white);
+    text-align: center;
+    font-size: var(--font-size-extra-large);
+    font-family: "e-Ukraine-LOGO";
+
+}
+
+.authinfobox {
+    display: flex;
+    width: 100%;
+    padding: var(--padding-small);
+    align-items: center;
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+.authbtnbox {
+    display: flex;
+    padding: var(--padding-small);
+    width: 100%;
+    justify-content: space-around;
+    gap: var(--gap-small);
+}
+
+.authform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-medium);
+    width: 100%;
+}
+
+.authBnt,
+.authBntapi {
+    border-radius: var(--border-radius);
+    background: var(--bright-red);
+    color: var(--main-white);
+    border: none;
+    display: flex;
+    min-width: 6.25rem;
+    align-self: flex-start;
+    height: 2.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+    font-size: var(--font-size-small);
+    cursor: pointer;
+}
+
+.authBntapi {
+    background: var(--light-gray);
+}
+
+.authInput {
+    background: transparent;
+    border: none;
+    color: var(--main-white);
+    width: 100%;
+    outline: none;
+}
+
+.registerview {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.authbtnbox2 {
+    display: flex;
+    gap: var(--gap-small);
+    padding: var(--padding-medium);
+}

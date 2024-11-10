@@ -1,0 +1,31 @@
+{{define "errorBox"}}
+<div class="addinfo">
+    <div class="headline">Wooooops!</div>
+    <div class="headline" style="color: var(--light-red);">Something went wrong!</div>
+</div>
+<div class="line"></div>
+<div id="spotifyPlayer" style="width: 100%;"></div>
+<script>
+    var spotifyTracks = [
+        "https://open.spotify.com/embed/track/4PTG3Z6ehGkBFwjybzWkR8?utm_source=generator&theme=0",
+        "https://open.spotify.com/embed/track/6lvJDlBrtabJWiBlMTGxKs?utm_source=generator&theme=0",
+        "https://open.spotify.com/embed/track/6FLwmdmW77N1Pxb1aWsZmO?utm_source=generator&theme=0",
+        "https://open.spotify.com/embed/track/3pDZSfOSszYWMYygDiuPJx?utm_source=generator&theme=0",
+        "https://open.spotify.com/embed/track/3STU5Q4eapZJ5VbKsjsEOY?utm_source=generator&theme=0",
+        "https://open.spotify.com/embed/track/0kdqcbwei4MDWFEX5f33yG?utm_source=generator&theme=0"
+    ];
+
+    var randomIndex = Math.floor(Math.random() * spotifyTracks.length);
+
+    var iframe = document.createElement('iframe');
+    iframe.style.borderRadius = 'var(--border-radius)';
+    iframe.src = spotifyTracks[randomIndex];
+    iframe.width = '100%';
+    iframe.height = '352';
+    iframe.frameBorder = '0';
+    iframe.autoplay = true;
+
+    document.getElementById('spotifyPlayer').appendChild(iframe);
+</script>
+
+{{end}}

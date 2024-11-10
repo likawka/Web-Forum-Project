@@ -1,0 +1,124 @@
+{{template "base" .}}
+
+{{define "css"}}
+{{template "sidebar.css" .}}
+{{template "header.css" .}}
+<link rel="stylesheet" href="/assets/css/authourisation.css" />
+<link rel="stylesheet" href="/assets/css/editinfo.css" />
+{{end}}
+
+{{define "title"}}{{(index .ParseData.User 0).UserName}}{{end}}
+
+{{define "content"}}
+<div class="mainBody">
+  {{template "sidebar" .}}
+  <div class="col-2">
+    {{template "header" .}}
+    <main class="content">
+      {{if .AddData.Error}}
+      {{template "errorBox" .}}
+      {{else}}
+
+      {{if not .FormData.UserPageEdit}}
+      <div class="addinfo">
+        <div class="headline">Hello {{if ne (index .ParseData.User 0).UserId .AddData.UserId}} from {{end}}</div>
+        {{with index .ParseData.User 0}}
+        <div class="headline" style="color: var(--light-red);">{{.UserName}}</div>
+      </div>
+      <div class="addinfoframe1">
+        <div class="addinfoframe">
+        <div class="addinfo">
+          <div class="infostatic">Enrolled</div>
+          <div class="inforender">{{.CreateTimeAgo}}</div>
+          <div class="infostatic">Posted</div>
+          <div class="inforender">{{.AmountOfPosts}} times</div>
+          <div class="infostatic">Commented</div>
+          <div class="inforender">{{.AmountOfComments}} times</div>
+        </div>
+      </div>
+        {{end}}
+
+
+        {{template "sortBox" .}}
+      </div>
+      <div class="line"></div>
+      {{if eq .AddData.AmountOfPosts 0}}
+      <div class="addinfo noPostClass">
+        <div class="headline">No</div>
+        <div class="headline" style="color: var(--light-red);">Posts</div>
+      </div>
+      {{else}}
+      {{if eq .AddData.SortByType "Posts"}}{{range .ParseData.Posts}}{{template "postBox" .}}<div class="line"></div>
+      {{end}}{{end}}
+      {{if eq .AddData.SortByType "Comments"}}{{range .ParseData.Comments}}{{template "postBox" .}}<div class="line">
+      </div>{{end}}{{end}}
+      {{end}}
+      {{else}}
+      <!-- <div class="addinfo">
+        <div class="headline">Edit</div>
+        <div class="headline" style="color: var(--light-red);">Info</div>
+      </div>
+
+      <div class="line"></div>
+
+      <form class="editform" method="POST">
+
+        <div class="rowBox">
+          <div class="editRowBox">
+            Change username:
+          </div>
+          <div class="authinfoBox ">
+            <input type="text" name="username" id="username" class="authInput" placeholder="{{.USERNAME}}" required />
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="rowBox ">
+          <div class="editRowBox">
+            Change email:
+          </div>
+          <div class="authinfoBox ">
+            <input type="email" name="email" id="password" class="authInput" placeholder="{{.EMAIL}}"
+              pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required />
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="rowBox">
+          <div class="editRowBox">
+            Change password:
+          </div>
+          <div class="authinfoBox ">
+            <input type="password" name="password" id="password" class="authInput" minlength="8" maxlength="16"
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%^&*_=+\-]).{8,16}" required />
+          </div>
+        </div>
+
+        <div class="rowBox">
+          <div class="editRowBox">
+            Repeat password:
+          </div>
+          <div class="authinfoBox ">
+            <input type="password" name="password" id="password" class="authInput" minlength="8" maxlength="16"
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%^&*_=+\-]).{8,16}" required />
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="rowBox">
+          {{.Error}}
+        </div>
+
+        <input type="submit" class="authBnt" value="SAVE" name="edit" onclick="window.location.href='/user/'">
+
+      </form> -->
+
+
+
+      {{end}}
+      {{end}}
+    </main>
+  </div>
+</div>
+{{end}}
+
+{{define "js"}}
+{{template "postBox.js" .}}
+{{end}}

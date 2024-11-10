@@ -1,0 +1,41 @@
+.inputbox {
+    color: var(--main-white);
+    font-size: var(--font-size-extra-large);
+    border-radius: var(--border-radius);
+    border: var(--border-style);
+    background: var(--light-gray);
+    display: flex;
+    width: 100%;
+    padding: var(--padding-small);
+    align-items: center;
+}
+
+.inputaTagbox {
+    color: var(--main-white);
+    font-size: var(--font-size-medium);
+    border-radius: var(--border-radius);
+    border: var(--border-style);
+    background: var(--light-gray);
+    display: flex;
+    width: 100%;
+    padding: var(--padding-small);
+    align-items: center;
+}
+
+.inputview {
+    background: transparent;
+    border: none;
+}
+
+.inputbox input:focus,
+.inputaTagbox input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.formmarkdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);
+    width: 100%;
+}

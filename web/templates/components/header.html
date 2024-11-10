@@ -1,0 +1,39 @@
+{{define "header.css"}}
+<link rel="stylesheet" href="/assets/css/header.css" />
+{{end}}
+
+{{define "header"}}
+<header>
+    <div class="click sidebar-toggle view-toggle" >
+        <img class="mainIcon" src="/assets/img/sidebarbtn.svg" />
+    </div>
+
+    <form action="/search" method="GET" class="headerSearchBarFrame">
+        <img class="mainIcon" src="/assets/img/magnifyingglass.svg" />
+        <div class="headerSearchBar">
+            <input type="search" id="search" name="search" class="searchInput" placeholder="Search..." />
+        </div>
+    </form>
+    <div id="searchHints" class="searchHints">
+        <div class="searchHintItem static">
+            <div class="searchHintItem static">[tag] search within a tag</div>
+            <!-- <div class="searchHintItem static"> date: search by date <br> user: search by username</div> -->
+        </div>
+    </div>
+
+    {{if eq .AddData.UserRole "guest"}}
+    <div class="headerBnt click" onclick="window.location.href = '/authourisation';">
+        <img class="mainIcon" src="/assets/img/person.svg" />
+        LOG IN
+        {{else}}
+        <div class="headerBnt click" onclick="window.location.href = '/user/{{.AddData.UserId}}'">
+            <img class="mainIcon" src="/assets/img/person.svg" />
+            PROFILE
+            {{end}}
+        </div>
+</header>
+{{end}}
+
+{{define "postBox.js"}}
+<script src="/assets/js/pageEdit.js"></script>
+{{end}}

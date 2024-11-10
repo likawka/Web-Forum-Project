@@ -1,0 +1,29 @@
+{{define "sidebar.css"}}
+<link rel="stylesheet" href="/assets/css/sidebar.css" />
+{{end}}
+
+{{define "sidebar"}}
+<div class="side-bar">
+    <div class="logoSideBarFrame click" onclick="window.location.href = '/';">UNDER pressure</div>
+    <div class="sideBarMenuFrame">
+        <div class="sideBarMenuBtn click" onclick="window.location.href = '/';">
+            <img class="mainIcon " src="/assets/img/home.svg" />
+            Home
+        </div>
+
+        <div class="sideBarMenuBtn click" onclick="window.location.href = '/create';">
+            <img class="mainIcon" src="/assets/img/plus.svg" />
+            Create Post
+        </div>
+
+        {{if ne .AddData.UserRole "guest"}}
+        <form style="width: 100%;" method="POST" action="">
+            <div class="sideBarMenuBtn click">
+                <img class="mainIcon click" src="/assets/img/out.svg">
+                <input type="submit" class="textview click" value="Log out" name="Exit">
+            </div>
+        </form>
+        {{end}}
+    </div>
+</div>
+{{end}}

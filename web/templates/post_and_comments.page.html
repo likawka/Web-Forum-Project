@@ -1,0 +1,74 @@
+{{template "base" .}}
+
+{{define "css"}}
+{{template "sidebar.css" .}}
+{{template "header.css" .}}
+{{template "createPost.css" .}}
+{{template "markdownEditor.css" .}}
+{{end}}
+
+
+{{define "title"}}{{(index .ParseData.Posts 0).Title}}{{end}}
+
+{{define "content"}}
+<div class="mainBody">
+    <div id="notification"></div>
+    {{template "sidebar" .}}
+    <div class="col-2">
+        {{template "header" .}}
+        <main class="content">
+            {{if .AddData.Error}}
+            {{template "errorBox" .}}
+            {{else}}
+            {{with index .ParseData.Posts 0}}
+            <div class="headline">
+                {{.Title}}
+            </div>
+            <div class="addinfoframe">
+                <div class="addinfo">
+                    <div class="infostatic">Asked</div>
+                    <div class="inforender">{{.CreateTimeAgo}}</div>
+                    <div class="infostatic">Viewed</div>
+                    <div class="inforender">{{.AmountOfWatches}} times</div>
+                </div>
+                <div class="shareFrame">
+                    <img class="shareIcon click" onclick="copyLink('/post/{{ .Id }}')" src="/assets/img/share_grey.svg"
+                        alt="Copy Link">
+                </div>
+            </div>
+
+            <div class="line"></div>
+            {{template "postBox" .}}
+            {{end}}
+            <div class="addinfoframe">
+                <div class="numAnswers"> {{with index .ParseData.Posts 0}}{{.AmountOfComments}}{{end}} Answers</div>
+                {{template "sortBox" .}}
+            </div>
+
+            {{range .ParseData.Comments}}
+            {{ template "postBox" . }}
+            <div class="line"></div>
+            {{end}}
+            <div class="headline">
+                Your Answer
+            </div>
+
+            <form id="commentPost" class="formmarkdown" method="post" action="">
+                {{template "markdownEditor" .}}
+                <div class="rowBox">
+                    <input type="submit" value="POST" class="click headerBnt">
+                    {{.AddData.ErrorText}}
+                </div>
+            </form>
+            {{end}}
+        </main>
+    </div>
+</div>
+
+{{end}}
+
+
+{{define "js"}}
+{{template "markdownEditor.js" .}}
+{{template "postBox.js" .}}
+{{end}}

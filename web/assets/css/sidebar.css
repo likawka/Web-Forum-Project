@@ -1,0 +1,87 @@
+.side-bar {
+    flex: 1;
+    max-width: 16.25rem;
+    border-right: var(--border-style);
+    background: var(--ultra-light-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sideBarMenuFrame {
+    display: flex;
+    padding: var(--padding-large);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.sideBarMenuBtn {
+    display: flex;
+    height: 2.125rem;
+    padding: var(--padding-small);
+    align-items: center;
+    gap: var(--gap-small);
+    align-self: stretch;
+    border-radius: var(--border-radius);
+    color: var(--main-white);
+    font-size: var(--font-size-medium);
+}
+
+.active,
+.sideBarMenuBtn:hover {
+    background: var(--light-gray);
+}
+
+.logoSideBarFrame {
+    display: flex;
+    width: 16.25rem;
+    height: 3.375rem;
+    padding: var(--padding-medium);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-white);
+    text-align: center;
+    font-size: var(--font-size-large) !important;
+    font-family: var(--font-family); /* Use specified font family */
+}
+
+.textview {
+    font-size: var(--font-size-medium);
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: var(--main-white);
+    outline: none;
+    width: 100%;
+    display: flex;
+}
+
+/* Hide sidebar on smaller screens */
+@media (max-width: 768px) {
+    .side-bar {
+        display: none;
+        border-right: var(--border-style);
+        background: var(--ultra-light-gray);
+        position: relative;
+    }
+
+    .sidebar-toggle {
+        display: block;
+        /* padding-right: px;  */
+    }
+}
+
+.side-bar.active {
+    display: flex;
+}
+
+/* Hide the toggle button on screens larger than 768px */
+@media (min-width: 769px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
